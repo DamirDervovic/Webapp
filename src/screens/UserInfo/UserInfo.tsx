@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native"
 import { Button, Text } from "@rneui/themed";
 import { logIn, logOut } from "../../store/slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 export const UserInfo = ({ route, navigation }) => {
 	const loggedInAs = useSelector((state: any) => state.auth.loggedInAs);
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
 		margin: 24,
 		backgroundColor: 'white',
 		borderRadius: 12,
-		padding: 36,	
+		padding: 36,
 	},
 	infoContainer: {
 		marginBottom: 24,

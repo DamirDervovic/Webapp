@@ -5,7 +5,7 @@ import { addDoc, doc, deleteDoc, collection, getDocs, updateDoc } from "firebase
 const firebaseBaseQuery = async ({ baseUrl, url, method, body }) => {
 	switch (method) {
 		case 'GET':
-			const snapshot = await getDocs(collection(db, url));	
+			const snapshot = await getDocs(collection(db, url));
 			const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 			return { data };
 
@@ -16,11 +16,11 @@ const firebaseBaseQuery = async ({ baseUrl, url, method, body }) => {
 		case 'DELETE':
 			const docDelRef = await deleteDoc(doc(db, url, body));
 			return { data: { id: docDelRef, } };
-		
+
 		case 'PUT':
 			await updateDoc(doc(db, url, body.id), body);
 			return { data: { ...body } };
-		
+
 		default:
 			throw new Error(`Unhandled method ${method}`);
 	}
@@ -61,7 +61,7 @@ export const usersApi = createApi({
 			}),
 			invalidatesTags: ['users']
 		}),
-		// För att uppdatera en user. Anropas såhär updateUser({ user: { id: user.id, firstName: firstName, lastName: lastName }})	
+		// För att uppdatera en user. Anropas såhär updateUser({ user: { id: user.id, firstName: firstName, lastName: lastName }})
 		updateUser: builder.mutation({
 			query: ({ user }) => ({
 				baseUrl: '',

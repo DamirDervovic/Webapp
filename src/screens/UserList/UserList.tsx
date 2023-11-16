@@ -1,6 +1,7 @@
 import { View, Text, FlatList } from 'react-native'
 import { useGetUsersQuery } from '../../store/api/usersApi'
 import { ListItem } from '@rneui/themed'
+import React from 'react'
 
 const UserList = ({ navigation }) => {
 	const { data, isLoading } = useGetUsersQuery({})
